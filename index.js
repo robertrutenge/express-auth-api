@@ -34,7 +34,7 @@ const registrationSchema = Joi.object({
 
 const tokenVerifier = (req, res, next) => {
   const token = req.header("auth_token");
-  if (!token) return res.status(400).send("Access Denied");
+  if (!token) return res.status(401).send("Access Denied");
 
   try {
     const verified = jwt.verify(token, "OUR_VERY_SECURED_SECRET_KEY");
